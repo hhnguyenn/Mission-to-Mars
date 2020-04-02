@@ -51,7 +51,7 @@ def mars_news(browser):
         news_p = slide_elem.find("div", class_="article_teaser_body").get_text()
     except AttributeError:
         return None, None
-    browser.quit()
+    
     return news_title, news_p
 
 def featured_image(browser):
@@ -82,7 +82,7 @@ def featured_image(browser):
         return None
  
     img_url = f"https://www.jpl.nasa.gov{img_url_rel}"
-    browser.quit()
+
     return img_url
 
 def mars_facts(browser):
@@ -93,7 +93,6 @@ def mars_facts(browser):
     df.columns=['Description', 'Value']
     df.set_index('Description', inplace=True)
 
-    browser.quit()
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html()
 
@@ -117,7 +116,6 @@ def hemi_data(browser, product):
     
     img_url = f'https://astrogeology.usgs.gov{hemi_url}'
 
-    browser.quit()
     return hemi_title, img_url
 
 if __name__ == "__main__":
